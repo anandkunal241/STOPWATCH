@@ -14,10 +14,10 @@ public class watch extends javax.swing.JFrame implements Runnable{
     /**
      * Creates new form watch
      */
-    private String timestring="";
-    private int hours=0,minutes=0,seconds=0;
-    private Thread thread;
-    private boolean signal;
+    private String timestring="";           //it is used to show the time in string format
+    private int hours=0,minutes=0,seconds=0;           
+    private Thread thread;  //thread for inner class
+    private boolean signal;  //it is used to stop thread
     
     
     
@@ -36,11 +36,11 @@ public class watch extends javax.swing.JFrame implements Runnable{
             while(true)
                     {        
                         Calendar calendar = Calendar.getInstance();
-                        hours = calendar.get(Calendar.HOUR_OF_DAY);   //this function return time in 24-hour format
+                        hours = calendar.get(Calendar.HOUR_OF_DAY);   //this function return hour in 24-hour format
                         if(hours>12)
                             hours-=12;
-                        minutes = calendar.get(Calendar.MINUTE);
-                        seconds = calendar.get(Calendar.SECOND);
+                        minutes = calendar.get(Calendar.MINUTE);        //this function returns minutes
+                        seconds = calendar.get(Calendar.SECOND);            //this function returns seconds
                         Date date = calendar.getTime();
                         SimpleDateFormat formatter = new SimpleDateFormat("hh:mm:ss");
                         timestring = formatter.format(date);
@@ -57,7 +57,7 @@ public class watch extends javax.swing.JFrame implements Runnable{
     {
 
         @Override
-        public void run() {
+        public void run() {                                                             //run method for inner class
             String s;
             long arr[]=new long[3];
             long m=System.currentTimeMillis();
